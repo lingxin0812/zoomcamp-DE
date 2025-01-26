@@ -1,7 +1,12 @@
 # zoomcamp-DE
-Query for HW
+Code/Query for HW
 
---question3<br />
+-- question 1<br />
+$ docker run -it --entrypoint=bash python:3.12.8<br />
+/# pip --version<br />
+>pip 24.3.1<br />
+
+-- question 3<br />
 select count(trip_distance)<br />
 from green_trip<br />
 where trip_distance<=1;<br />
@@ -22,12 +27,12 @@ select count(trip_distance)<br />
 from green_trip<br />
 where trip_distance>10;<br />
 
---question4<br />
+-- question 4<br />
 select lpep_pickup_datetime::DATE, trip_distance<br />
 from green_trip<br />
 where trip_distance = (select max(trip_distance) from green_trip);<br />
 
---question5<br />
+-- question 5<br />
 select b."Zone", sum(a.total_amount) as Total_amount<br />
 from green_trip a<br />
 left join taxi_zones b<br />
@@ -37,7 +42,7 @@ group by a."PULocationID" ,b."Zone"<br />
 having sum(Total_amount) >13000<br />
 order by Total_amount desc;<br />
 
---question6<br />
+-- question 6<br />
 select c."Zone"<br />
 from green_trip a<br />
 left join taxi_zones b<br />
