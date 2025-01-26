@@ -1,10 +1,10 @@
 # zoomcamp-DE
-Query for HW
+Query for HW\
 
 --question3
-select count(trip_distance)
-from green_trip
-where trip_distance<=1;
+select count(trip_distance)\
+from green_trip\
+where trip_distance<=1;\
 
 select count(trip_distance)
 from green_trip
