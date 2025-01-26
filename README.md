@@ -3,8 +3,8 @@ Code/Query for HW
 
 -- question 1<br />
 $ docker run -it --entrypoint=bash python:3.12.8<br />
-/# pip --version<br />
->pip 24.3.1<br />
+ pip --version<br />
+ pip 24.3.1<br />
 
 -- question 3<br />
 select count(trip_distance)<br />
