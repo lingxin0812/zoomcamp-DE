@@ -1,5 +1,14 @@
 # zoomcamp-DE
-Code/Query for HW
+
+Code/Query for HW WEEK2<br />
+
+select count (filename) as file_count<br />
+from green_tripdata<br />
+where filename like 'green_tripdata_2020-%'<br />
+
+
+
+Code/Query for HW WEEK1<br />
 
 -- question 1<br />
 $ docker run -it --entrypoint=bash python:3.12.8<br />
