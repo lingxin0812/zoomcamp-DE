@@ -1,5 +1,7 @@
 # zoomcamp-DE
 
+Code/Query for HW WEEK3<br />
+
 CREATE OR REPLACE EXTERNAL TABLE `terraform-448923.nytaxi.external_tripdata`
 OPTIONS (
   format = 'PARQUET',
