@@ -1,5 +1,40 @@
 # zoomcamp-DE
 
+CREATE OR REPLACE EXTERNAL TABLE `terraform-448923.nytaxi.external_tripdata`
+OPTIONS (
+  format = 'PARQUET',
+  uris = [
+  'gs://terraform-448923-ling-bucket/yellow_tripdata_2024-*.parquet']
+);<br />
+
+CREATE OR REPLACE TABLE `terraform-448923.nytaxi.nonpartitioned_tripdata`<br />
+AS SELECT * FROM `terraform-448923.nytaxi.external_tripdata`;<br />
+
+SELECT COUNT(DISTINCT(PULocationID)) FROM `terraform-448923.nytaxi.nonpartitioned_tripdata`;<br />
+
+SELECT COUNT(DISTINCT(PULocationID)) FROM `terraform-448923.nytaxi.external_tripdata`;<br />
+
+select PULocationID,DOLocationID FROM `terraform-448923.nytaxi.nonpartitioned_tripdata`;<br />
+
+select PULocationID FROM `terraform-448923.nytaxi.nonpartitioned_tripdata`;<br />
+
+SELECT count(*) FROM `terraform-448923.nytaxi.external_tripdata`
+where fare_amount = 0;<br />
+
+CREATE OR REPLACE TABLE `terraform-448923.nytaxi.partitioned_tripdata`<br />
+PARTITION BY DATE(tpep_dropoff_datetime)<br />
+CLUSTER BY VendorID AS (
+  SELECT * FROM `terraform-448923.nytaxi.external_tripdata`
+);<br />
+
+SELECT DISTINCT(VendorID) FROM  `terraform-448923.nytaxi.nonpartitioned_tripdata`<br />
+WHERE DATE(tpep_dropoff_datetime) BETWEEN '2024-03-01' AND '2024-03-15';<br />
+
+SELECT DISTINCT(VendorID) FROM  `terraform-448923.nytaxi.partitioned_tripdata`<br />
+WHERE DATE(tpep_dropoff_datetime) BETWEEN '2024-03-01' AND '2024-03-15';<br />
+
+
+
 Code/Query for HW WEEK2<br />
 
 select count (filename) as file_count<br />
